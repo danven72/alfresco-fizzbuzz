@@ -10,13 +10,13 @@ class WordByNumberTest {
 	void testMyWorld() {
 		WordByNumber wbn = new WordByNumber("fizz",3);
 		
-		String result = wbn.myWord(3);
-		assertEquals("fizz", result);
-		assertFalse(wbn.isFoundWhenStringType());
+		WordByTypeResult result = wbn.myWord(3);
+		assertEquals("fizz", result.getWordResult());
+		assertFalse(result.isForceBreak());
 		
 		result = wbn.myWord(11);
-		assertEquals("", result);
-		assertFalse(wbn.isFoundWhenStringType());
+		assertEquals("", result.getWordResult());
+		assertFalse(result.isForceBreak());
 	}
 
 }

@@ -4,7 +4,6 @@ public class WordByString  implements WordByType {
 	
 	private String myWord;
 	private String myString;
-	private boolean foundWhenString = false;
 
 	public WordByString(String myWord, String myString) {
 		super();
@@ -13,22 +12,17 @@ public class WordByString  implements WordByType {
 	}
 
 	@Override
-	public String myWord(Integer aNumber) {
-		foundWhenString = false;
+	public WordByTypeResult myWord(Integer aNumber) {
+		WordByTypeResult wbtR = new WordByTypeResult(true);
 		String result = "";
 		String numberStr = String.valueOf(aNumber);
 		if (numberStr.contains(getMyString())) {
 			result = getMyWord();
-			foundWhenString = true;
-		}			
-		return result;
+		}
+		wbtR.setWordResult(result);
+		return wbtR;
 	}
 	
-	@Override
-	public boolean isFoundWhenStringType() {
-		return foundWhenString;
-	}
-
 	private String getMyString() {
 		return myString;
 	}

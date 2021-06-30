@@ -10,13 +10,13 @@ class WordByStringTest {
 	void testMyWorld() {
 		WordByString wbs = new WordByString("alfresco","3");
 		
-		String result = wbs.myWord(13);
-		assertEquals("alfresco", result);
-		assertTrue(wbs.isFoundWhenStringType());
+		WordByTypeResult result = wbs.myWord(13);
+		assertEquals("alfresco", result.getWordResult());
+		assertTrue(result.isForceBreak());
 		
 		result = wbs.myWord(12);
-		assertEquals("", result);
-		assertFalse(wbs.isFoundWhenStringType());
+		assertEquals("", result.getWordResult());
+		assertFalse(result.isWordFound() && result.isForceBreak());
 	}
 
 }

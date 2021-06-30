@@ -11,12 +11,15 @@ public class WordByNumber implements WordByType {
 		this.myNumber = myNumber;
 	}
 
-	public String myWord(Integer  aNumber) {
+	public WordByTypeResult myWord(Integer  aNumber) {
+		WordByTypeResult wbtR = new WordByTypeResult(false);
 		String result = "";
 		if (aNumber % getMyNumber() == 0) {
 			result = getMyWord();
 		}
-		return result;
+		
+		wbtR.setWordResult(result);
+		return wbtR;
 	}
 
 	private String getMyWord() {

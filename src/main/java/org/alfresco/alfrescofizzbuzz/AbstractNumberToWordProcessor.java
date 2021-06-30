@@ -23,12 +23,14 @@ public abstract class AbstractNumberToWordProcessor implements NumberToWordProce
     	for (Integer num : numbers) {
     		String word = "";
     		for (WordByType wbn: wordByTypeList) {
-   				word = word + wbn.myWord(num);
-   				if (wbn.isFoundWhenStringType()) {
+   				WordByTypeResult wbtResult = wbn.myWord(num); 
+    			word = word + wbtResult.getWordResult();
+    			if (wbtResult.isWordFound() && wbtResult.isForceBreak()) {
    					break;
    				}
     		}
         	addNumberIfNoWord(sb, word, num);
+    		
         	sb.append(" ");
 
     	}
