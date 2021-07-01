@@ -1,14 +1,16 @@
-package org.alfresco.alfrescofizzbuzz;
+package org.alfresco.alfrescofizzbuzz.wordby;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.alfresco.alfrescofizzbuzz.model.WordByTypeResult;
+import org.alfresco.alfrescofizzbuzz.wordby.WordByNumber;
 import org.junit.jupiter.api.Test;
 
 class WordByNumberTest {
 
 	@Test
 	void testMyWorld() {
-		WordByNumber wbn = new WordByNumber("fizz",3);
+		WordByNumber wbn = new WordByNumber("fizz",3, false);
 		
 		WordByTypeResult result = wbn.myWord(3);
 		assertEquals("fizz", result.getWordResult());

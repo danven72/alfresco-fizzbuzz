@@ -1,4 +1,4 @@
-package org.alfresco.alfrescofizzbuzz;
+package org.alfresco.alfrescofizzbuzz.model;
 
 public class WordByTypeResult {
 	

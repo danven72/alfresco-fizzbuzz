@@ -1,7 +1,10 @@
-package org.alfresco.alfrescofizzbuzz;
+package org.alfresco.alfrescofizzbuzz.processor;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.alfresco.alfrescofizzbuzz.model.WordByTypeResult;
+import org.alfresco.alfrescofizzbuzz.wordby.WordByType;
 
 public abstract class AbstractNumberToWordProcessor implements NumberToWordProcessor {
 
@@ -9,12 +12,8 @@ public abstract class AbstractNumberToWordProcessor implements NumberToWordProce
 
 	public AbstractNumberToWordProcessor(WordByType...wordByTypes ) {
 		for (WordByType wbt: wordByTypes) {
-			addWordByTypeProcessor(wbt);
+			wordByTypeList.add(wbt);
 		}
-	}
-	
-	private void addWordByTypeProcessor(WordByType wordByType) {
-		wordByTypeList.add(wordByType);
 	}
 	
     public String execute(List<Integer> numbers) {
@@ -22,8 +21,8 @@ public abstract class AbstractNumberToWordProcessor implements NumberToWordProce
     	StringBuilder sb = new StringBuilder();    	    	    	
     	for (Integer num : numbers) {
     		String word = "";
-    		for (WordByType wbn: wordByTypeList) {
-   				WordByTypeResult wbtResult = wbn.myWord(num); 
+    		for (WordByType wbt: wordByTypeList) {
+   				WordByTypeResult wbtResult = wbt.myWord(num); 
     			word = word + wbtResult.getWordResult();
     			if (wbtResult.isWordFound() && wbtResult.isForceBreak()) {
    					break;
@@ -32,7 +31,6 @@ public abstract class AbstractNumberToWordProcessor implements NumberToWordProce
         	addNumberIfNoWord(sb, word, num);
     		
         	sb.append(" ");
-
     	}
         return sb.toString().trim();
     }
